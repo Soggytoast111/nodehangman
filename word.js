@@ -37,16 +37,21 @@ function Word(letters){
 
 
 
-var wordVar = createLetters(splitWord)
+//var wordVar = createLetters(splitWord)
 
-var wordConstruct = new Word(wordVar)
+//var wordConstruct = new Word(wordVar)
 
-wordConstruct.printWord()
-wordConstruct.guess(keyPress)
-wordConstruct.printWord()
-wordConstruct.guess("r")
-wordConstruct.printWord()
-wordConstruct.guess("e")
-wordConstruct.printWord()
-wordConstruct.guess("c")
-wordConstruct.printWord()
+//wordConstruct.printWord()
+//wordConstruct.guess(keyPress)
+//wordConstruct.printWord()
+//wordConstruct.guess("r")
+//wordConstruct.printWord()
+//wordConstruct.guess("e")
+//wordConstruct.printWord()
+//wordConstruct.guess("c")
+//wordConstruct.printWord()
+
+module.exports = {
+    createLetters: createLetters,
+    Word: Word
+}
