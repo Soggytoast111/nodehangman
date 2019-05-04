@@ -4,6 +4,8 @@ var wordJS = require("./word.js")
 var guessedLetter = ""
 var wordConstruct    
 var revealedLetters = 0
+var usedLetter = []
+
 
 startGame()
 
@@ -13,7 +15,6 @@ fs.readFile("randomWord.txt", 'utf8', (err, data) => {
         data = data.split(",")
 
         var randomNumber = Math.floor(Math.random() * data.length);
-        console.log(randomNumber)
         var selectedWord = data[randomNumber]
         console.log(selectedWord)
 
@@ -41,18 +42,23 @@ function promptLetter(){
 }
 
 function revealLetter(){
-    
+    for (i=0; i<usedLetter.length;i++){
+        if (usedLetter[i] == guessedLetter){
+            console.log("You alredy guessed that letter!  Guess again!")
+            promptLetter()
+            return
+        }
+    }
     for (i=0; i<wordConstruct.letters.length; i++){
         revealedLetters = wordConstruct.letters[i].setGuessed(guessedLetter)
         
     }
     wordConstruct.printWord()
+    usedLetter.push(guessedLetter)
     checkSolved()
 }
 
 function checkSolved(){
-    console.log("revealedLetters count:  " + revealedLetters)
-    console.log("wordconstruct.solved count:  "  + wordConstruct.solved)
     if (revealedLetters == wordConstruct.solved){
         console.log("You win!")
         inquirer.prompt([
@@ -72,6 +78,7 @@ function checkSolved(){
                 wordVar = {}
                 letterFunction = {}
                 letters = {}
+                usedLetter = []
                 revealedLetters = 0
                 startGame()
             }
