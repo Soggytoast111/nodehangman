@@ -1,5 +1,5 @@
 var Letter = require("./letter")
-
+//var revealedLetters = 0
 var testWord = "beetlejuice"
 
 var splitWord = testWord.split("")
@@ -14,8 +14,9 @@ function createLetters(splitWord){
     return letters
 }
 
-function Word(letters){
+function Word(letters, solved){
     this.letters = letters,
+    this.solved = solved,
     this.printWord = function(){
         var typeString = []
         for (i=0; i<this.letters.length; i++){

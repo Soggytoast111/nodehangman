@@ -1,3 +1,5 @@
+var revealedLetters = 0
+
 function Letter(l, guessed){
     this.l = l
     this.guessed = guessed
@@ -11,8 +13,10 @@ function Letter(l, guessed){
     }
     this.setGuessed = function(input){
         if (input == this.l){
+            revealedLetters++
             this.guessed = true
         }
+        return revealedLetters
     }
 }
 
