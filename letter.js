@@ -13,10 +13,14 @@ function Letter(l, guessed){
     }
     this.setGuessed = function(input){
         if (input == this.l){
-            revealedLetters++
+            console.log("new test on revealed letters:  " + revealedLetters)
+            revealedLetters = revealedLetters + 1
             this.guessed = true
         }
         return revealedLetters
+    }
+    this.initialize = function(){
+        revealedLetters = 0
     }
 }
 

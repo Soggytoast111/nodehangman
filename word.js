@@ -1,5 +1,5 @@
 var Letter = require("./letter")
-//var revealedLetters = 0
+var revealedLetters = 0
 var testWord = "beetlejuice"
 
 var splitWord = testWord.split("")
@@ -7,10 +7,13 @@ var keyPress = "j"
 var letters = []
 
 function createLetters(splitWord){
+        letters = []
+        revealedLetters = 0
     for (i=0; i<splitWord.length;i++){
-        var letterFunction = new Letter(splitWord[i], false)
+        letterFunction = new Letter(splitWord[i], false)
         letters.push(letterFunction)
     }
+    
     return letters
 }
 
